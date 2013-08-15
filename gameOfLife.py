@@ -19,11 +19,12 @@ initialPercentAlive = 70.0     # initial percentage of alive
 nRows = 5
 nCols = 5
 
-def prettyPrint(matrix, nRows, nCols):
+# Prints array in nice format
+def prettyPrint(array, nRows, nCols):
   for i in range(0, nRows):
     s = ' '
     for j in range(0, nCols):
-      s = s + str(matrix[i][j]) + ' '
+      s = s + str(array[i][j]) + ' '
     print s
 
 # Randomly initialize population
