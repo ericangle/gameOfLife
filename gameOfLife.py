@@ -10,6 +10,7 @@
 # any dead cell with exactly 3 live neighbors becomes a living cell
 
 import random
+import evolve
 
 alive = 1
 dead = 0                       
@@ -17,25 +18,6 @@ generations = 3                # number of generations
 initialPercentAlive = 70.0     # initial percentage of alive 
 nRows = 5
 nCols = 5
-
-def evolve(pop, nRows, nCols):
-  evolvedPop = pop
-  for i in range(0, nRows):
-    for j in range(0, nCols):
-      numAlive = 0
-      for k in range(i-1,i+2):
-        for l in range(j-1,j+2):
-          h = k != i
-          m = l != j
-          g = h or m
-          if (k >= 0 and k <= nRows - 1 and l >= 0 and l <= nCols - 1 and g):
-            if (pop[k][l] == alive):
-              numAlive = numAlive + 1
-      if (numAlive <= 1 or numAlive >= 4):
-        evolvedPop[i][j] = dead
-      if (numAlive == 3 and pop[i][j] == dead):
-        evolvedPop[i][j] = alive
-  return evolvedPop
 
 def prettyPrint(matrix, nRows, nCols):
   for i in range(0, nRows):
@@ -57,6 +39,6 @@ prettyPrint(pop, nRows, nCols)
 
 # Evolve population
 for i in range(2, generations+1):
-  pop = evolve(pop, nRows, nCols)
+  pop = evolve.evolve(pop, nRows, nCols, alive, dead)
   print 'Population at generation' + str(i) + ':'
   prettyPrint(pop, nRows, nCols) 
