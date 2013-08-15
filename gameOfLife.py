@@ -11,13 +11,61 @@
 
 import random
 import evolve
+import numpy, math, os, sys 
+#import matplotlib.pyplot as plt
+from optparse import OptionParser
+
+parser = OptionParser()
+parser.add_option("-i","--initPerAlive",type="float",
+                  help="Initial percent of population that is alive.")
+parser.add_option("-g","--gen",type="int",
+                  help="Number of generations to simulate.")
+parser.add_option("-r","--rows",type="int",
+                  help="Number of people in horizontal direction.")
+parser.add_option("-c","--cols",type="int",
+                  help="Number of people in vertical direction.")
+
+(options,args) = parser.parse_args()
+
+# Read in user-specified parameters                                                                                                      
+if (options.initPerAlive == None):
+  print "WARNING:"
+  print "Initial percent of population that is alive"
+  print "is not specified. Setting to 50.0."
+  print " "
+  initialPercentAlive = 50.0
+else:
+  initialPercentAlive = options.initPerAlive
+
+if (options.gen == None):
+  print "WARNING:"
+  print "Number of generations to simulate"
+  print "is not specified. Setting to 1."
+  print " "
+  generations = 1
+else:
+  generations = options.gen
+
+if (options.rows == None):
+  print "WARNING:"
+  print "Number of people in horizontal direction"
+  print "is not specified. Setting to 10."
+  print " "
+  nRows = 10
+else:
+  nRows = options.rows
+
+if (options.cols == None):
+  print "WARNING:"
+  print "Number of people in vertical direction"
+  print "is not specified. Setting to 10."
+  print " "
+  nCols = 10
+else:
+  nCols = options.cols
 
 alive = 1
 dead = 0                       
-generations = 3                # number of generations
-initialPercentAlive = 70.0     # initial percentage of alive 
-nRows = 5
-nCols = 5
 
 # Prints array in nice format
 def prettyPrint(array, nRows, nCols):
