@@ -9,6 +9,11 @@
 # a cell with 2 or 3 live neighbors lives on to the next cycle/generation
 # any dead cell with exactly 3 live neighbors becomes a living cell
 
+# To do:
+# 1. simulate many times for variety of initialPercentAlive values
+# 2. plot distribution of likelihood to survive after n generations
+#    as function of initialPercentAlive
+
 import random
 import evolve
 import numpy, math, os, sys 
