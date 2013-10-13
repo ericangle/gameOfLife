@@ -1,6 +1,6 @@
 # Conway's Game of Life, as described here:
 # http://prezi.com/ciy0b1veai06/ucar-code-retreat-2013/
-#
+
 # A simulation of evolution, based on a few rules:
 # a grid of cells, either dead or alive status
 # status of cell depends on its 8 surrounding neighbors:
